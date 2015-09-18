@@ -5,7 +5,6 @@
 National Basketball Association, free throw data, 2013-2014 season
 }
 \description{Free throw statistics on 482 active players, 2013-2014 season}
-} 
 \usage{data(NBA1314)}
 \format{
   A data frame with 482 players (rows) variables including.
