@@ -12,12 +12,12 @@ National Basketball Association, free throw data, 2013-2014 season
     \item{\code{PLAYER}}{name of player} 
     \item{\code{TEAM}}{player's team}
     \item{\code{GP}}{games played}
-    \item{\code{PPG}}{points per game} }
-    \item{\code{FTA}}{free throws attempted} }
-    \item{\code{FTM}}{free throws made} }
-    \item{\code{FTprop}}{FTA/FTM} }
+    \item{\code{PPG}}{points per game} 
+    \item{\code{FTA}}{free throws attempted} 
+    \item{\code{FTM}}{free throws made} 
+    \item{\code{FTprop}}{FTA/FTM} 
+    }
   }
-}
 \details{
 Data obtained from ESPN.
 }
