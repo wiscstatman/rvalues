@@ -1,8 +1,8 @@
 Package: rvalues
 Type: Package
 Title: R-Values for Ranking in High-Dimensional Settings
-Version: 0.5
-Date: 2015-06-30
+Version: 0.5.1
+Date: 2015-09-18
 Author: Nicholas Henderson and Michael Newton
 Maintainer: Nicholas Henderson <nhenders@stat.wisc.edu>
 Imports: graphics, stats, utils
@@ -10,4 +10,3 @@ Description: A collection of functions for computing "r-values" from various kin
 License: GPL-2
 LazyData: yes
 NeedsCompilation: yes
-Packaged: 2015-09-16 23:38:52 UTC; nhenders
