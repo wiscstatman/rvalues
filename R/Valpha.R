@@ -1,4 +1,4 @@
-Valpha <- function(V, alpha.grid, smooth = 0)  {
+Valpha <- function(V, alpha.grid, smooth = "none")  {
 ### allow for alpha.upper < 1
 ### To do this, easier just to write another C version of VVcut
 
@@ -38,9 +38,8 @@ Valpha <- function(V, alpha.grid, smooth = 0)  {
   }
   ### For each row of Valpha, determine the index at which
   ### Valpha[i,] intersects lambda_{\alpha}
-  cut.ind <- VVcut(V, lam.smooth.eval, nrow(V), ngrid)  
-  
-  rvalues <- alpha.grid[cut.ind]
+  rvalues <- VVcut(V, lam.smooth.eval, nrow(V), ngrid, alpha.grid)
+ 
   ans <- list()
   ans$rvalues <- rvalues
   ans$Vmarginals <- lam

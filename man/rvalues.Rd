@@ -14,7 +14,7 @@ in the listed references.
 }
 \usage{
 rvalues(data, family = gaussian, hypers = "estimate", prior = "conjugate",
-       alpha.grid = NULL, ngrid = NULL, smooth = 0, control = list()) 
+       alpha.grid = NULL, ngrid = NULL, smooth = "none", control = list()) 
 }
 \arguments{
   \item{data}{A data frame or a matrix with the number of rows equal to the number of sampling units. 

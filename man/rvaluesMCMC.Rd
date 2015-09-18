@@ -7,7 +7,7 @@ R-values from MCMC output.
 Returns r-values from an array of MCMC output.
 }
 \usage{
-rvaluesMCMC(output, qtheta, alpha.grid = NULL, ngrid = NULL, smooth = 0)
+rvaluesMCMC(output, qtheta, alpha.grid = NULL, ngrid = NULL, smooth = "none")
 }
 \arguments{
   \item{output}{

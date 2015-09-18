@@ -1,6 +1,6 @@
 rvalues <- function(data, family = gaussian, hypers = "estimate",
                     prior = "conjugate", alpha.grid = NULL, ngrid = NULL,
-                    smooth = 0, control = list())  {
+                    smooth = "none", control = list())  {
   
   mod <- match.call(expand.dots=FALSE)
   if(is.null(alpha.grid)) {

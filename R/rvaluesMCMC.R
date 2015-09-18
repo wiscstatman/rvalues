@@ -1,6 +1,6 @@
 
 rvaluesMCMC <- function(output, qtheta, alpha.grid = NULL, ngrid = NULL,
-                        smooth = 0)  {
+                        smooth = "none")  {
   
   ##########################################################################
   ##  Last edited: 7/10/14

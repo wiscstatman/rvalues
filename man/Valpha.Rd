@@ -9,7 +9,7 @@ column of Valpha contains posterior tail probabilities relative
 to a threshold indexed by alpha. 
 }
 \usage{
-Valpha(V, alpha.grid, smooth = 0)
+Valpha(V, alpha.grid, smooth = "none")
 }
 \arguments{
   \item{V}{a numeric vector with (i,j) entry: V[i,j] = P(theta_{i} >= theta[alpha_{j}]|data) }

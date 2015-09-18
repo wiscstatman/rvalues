@@ -27,7 +27,12 @@ SEXP Vcut(SEXP Vmat, SEXP lamfun, SEXP nunits, SEXP ngrid, SEXP Agrid) {
                 g0 = REAL(Vmat)[ii + nrow*jj - 1] - REAL(lamfun)[jj - 1]; 
                 gdelt = REAL(Vmat)[ii + nrow*jj] - REAL(lamfun)[jj] - g0;
                 slop = (REAL(Agrid)[jj] - REAL(Agrid)[jj - 1])/gdelt;
-                REAL(ans)[ii] = REAL(Agrid)[jj - 1] - g0*slop;
+                if(g0*slop <= 0) {
+                    REAL(ans)[ii] = REAL(Agrid)[jj - 1] - g0*slop;
+                }
+                else {
+                    REAL(ans)[ii] = REAL(Agrid)[jj];
+                }
             }
             else {
                 REAL(ans)[ii] = REAL(Agrid)[0];
