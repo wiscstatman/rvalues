@@ -22,5 +22,4 @@ National Basketball Association, free throw data, 2013-2014 season
 Data obtained from ESPN.
 }
 \references{See data analyzed in Henderson and Newton, 2015}
-}
 \keyword{datasets}
