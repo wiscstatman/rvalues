@@ -7,7 +7,7 @@ an R package to calculate r-values for ranking and selection in large-scale infe
 Installation
 ------------
 
-library(devtools)
+`library(devtools)`
 
 
-install_github("wiscstatman/rvalues")
+`install_github("wiscstatman/rvalues")`
