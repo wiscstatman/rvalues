@@ -134,5 +134,5 @@ rvalueBoot <- function(object, statistic = median, R, type = "nonparametric") {
     ans$rval.boot <- apply(RvalStore,1,FUN=statistic)
     return(ans)
 }
-
+### Testing commit on 12/16/15
 #### To do: add control parameters to the npmle 
