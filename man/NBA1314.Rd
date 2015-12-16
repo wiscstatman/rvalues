@@ -9,10 +9,13 @@ National Basketball Association, free throw data, 2013-2014 season
 \format{
   A data frame with 482 players (rows) variables including.
   \describe{
+    \item{\code{RK}}{rank of player by proportion of free throws made}
     \item{\code{PLAYER}}{name of player} 
     \item{\code{TEAM}}{player's team}
     \item{\code{GP}}{games played}
     \item{\code{PPG}}{points per game} 
+    \item{\code{FTM0}}{FTM/GP}
+    \item{\code{FTA0}}{FTA/GP}
     \item{\code{FTA}}{free throws attempted} 
     \item{\code{FTM}}{free throws made} 
     \item{\code{FTprop}}{FTA/FTM} 
