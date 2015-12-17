@@ -5,7 +5,7 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
   mod <- match.call(expand.dots=FALSE)
   if(is.null(alpha.grid)) {
     ### initialize alpha_grid if not entered by user
-    alpha.grid <- MakeGrid(nunits=nrow(data),type="log",ngrid=ngrid)
+    alpha.grid <- MakeGrid(nunits = nrow(data), type = "log", ngrid = ngrid)
   }
   if(!is.null(alpha.grid)) {
     ngrid <- length(alpha.grid)
@@ -54,7 +54,7 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
              npfit <- npmle(data,family=gaussian,maxiter=con$maxiter,
                             tol=con$tol,smooth=con$smooth)
              ###  posterior mean
-             PM <- npmixapply(npfit,function(x) { x })
+             PM <- npfit$post.mean
              
              lb <- min(npfit$support) - .01
              theta.alpha <- ThetaQuantiles(npfit$Fhat, alpha.grid, lbd = lb, 
@@ -91,7 +91,7 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
              npfit <- npmle(data,family=poisson,maxiter=con$maxiter,
                             tol=con$tol,smooth=con$smooth)
              ### should this be on the log scale?
-             PM <- npmixapply(npfit,function(x) { x })
+             PM <- npfit$post.mean
              
              lb <- exp(log(min(npfit$support)) - 2)
              theta.alpha <- ThetaQuantiles(npfit$Fhat, alpha.grid, lbd = lb, 
@@ -99,7 +99,6 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
              theta.probs <- -diff(c(1,npfit$Fhat(theta.alpha)))
              tmp <- NPagrid(estimate = data[,1], nuisance = data[,2], theta.alpha, 
                             theta.probs, alpha.grid, smooth, family = "poisson")
-
              bar <- data.frame( RValue=tmp$rvalues, RV.rank=rank(tmp$rvalues),
                                 MLE.rank=rank(-estimate/nuisance), PM.rank=rank(-PM),
                                 xx = estimate, eta = nuisance, PostMean = PM)  

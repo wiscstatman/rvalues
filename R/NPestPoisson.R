@@ -14,7 +14,7 @@
 
 PostProbPois <- function(x, eta, support, mix.prop) {
     ### Amat is an n.support x n matrix
-    Amat <- exp(outer( log(support), x) - outer(eta, support) )
+    Amat <- exp(outer( log(support), x) - outer(support, eta) )
     B <- mix.prop*Amat
     lik <- colSums(B)  ### note this is only proportional to the likelihood
     PP <- t(B)/lik
@@ -72,8 +72,9 @@ NPestPoisson <- function(x,eta,maxiter,tol,nmix)  {
           break
       }
   }
+  post.mean <- PP%*%support
   log.lik <- log.lik[1:(counter+1)]
   conv <- ifelse(maxiter == counter,1,0)
-  return(list(mix.prop=mix.prop,support=support,convergence = conv,log.lik=log.lik,numiter=counter))
+  return(list(mix.prop=mix.prop,support=support,convergence = conv,log.lik=log.lik,numiter=counter, post.mean=post.mean))
 }
 
