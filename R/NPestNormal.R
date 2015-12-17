@@ -1,17 +1,35 @@
-PostProbNorm <- function(x,std_err,support,mix.prop) {
-      n <- length(x)
-      T <- length(support)
-     
-      z <- .C("postprobnormal", as.double(x), as.double(std_err), 
-                  as.double(support), as.double(mix.prop),
-                  as.integer(n), as.integer(T), double(T), 
-                  post = double(n*T), loglik = double(1), PACKAGE = "rvalues")
-      ans <- list()
-      ans$postprobs <- matrix(z$post, nrow=n)
-      ans$loglik <- z$loglik
-      return(ans)
-}
+#PostProbNorm <- function(x,std_err,support,mix.prop) {
+#      n <- length(x)
+#      T <- length(support)
+#     
+#      z <- .C("postprobnormal", as.double(x), as.double(std_err), 
+#                  as.double(support), as.double(mix.prop),
+#                  as.integer(n), as.integer(T), double(T), 
+#                  post = double(n*T), loglik = double(1), PACKAGE = "rvalues")
+#      ans <- list()
+#      ans$postprobs <- matrix(z$post, nrow=n)
+#      ans$loglik <- z$loglik
+#      return(ans)
+#}
 
+
+PostProbNorm <- function(x, std_err, support, mix.prop) {
+    ### Amat is nsupport x n matrix
+    Amat <- t(dnorm(outer(x, support, FUN="-"), sd=std_err))
+  
+    B <- mix.prop*Amat
+    lik <- colSums(B)
+    PP <- t(B)/lik
+    ans <- list()
+    ans$loglik <- sum(log(lik))
+    ans$postprobs <- PP
+    #for(i in 1:n) {
+    #     tmp <- mix.prop*dnorm(x[i], mean=support, sd = std_err[i])
+    #     PP[i,] <- tmp/sum(tmp)
+    #     llik[i] <- log(sum(tmp))
+    #}
+    return(ans)
+}
 
 NPestNormal = function(x,std_err,maxiter,tol,nmix)  {
   ### This function takes an initial estimate of the mixing distribution
@@ -46,15 +64,15 @@ NPestNormal = function(x,std_err,maxiter,tol,nmix)  {
   mix.prop <- rep(1/nmix,nmix)
   ss <- 1/(std_err^2)
 
-  tmp <- PostProbNorm(x,std_err,support,mix.prop)
+  tmp <- PostProbNorm(x, std_err, support, mix.prop)
   PP <- tmp$postprobs
   log.lik[1] <- tmp$loglik
   done <- FALSE
   for(k in 1:maxiter)  {
       mix.prop <- colMeans(PP)
-      support <- crossprod(PP,x*ss)/crossprod(PP,ss)
-   
-      tmp <- PostProbNorm(x,std_err,support,mix.prop)
+      support <- as.vector(crossprod(PP,x*ss)/crossprod(PP,ss))
+      
+      tmp <- PostProbNorm(x, std_err, support, mix.prop)
       PP <- tmp$postprobs
       log.lik[k+1] <- tmp$loglik
       done <- (abs((log.lik[k+1] - log.lik[k])/log.lik[k]) < tol) 
@@ -63,7 +81,9 @@ NPestNormal = function(x,std_err,maxiter,tol,nmix)  {
           break
       }
   }
+  post.mean <- PP%*%support
+  print(length(post.mean))
   log.lik <- log.lik[1:(counter+1)]
   conv = ifelse(maxiter == counter,1,0)
-  return(list(mix.prop=mix.prop,support=support,convergence = conv,log.lik=log.lik,numiter=counter))
+  return(list(mix.prop=mix.prop,support=support,convergence = conv,log.lik=log.lik,numiter=counter,post.mean=post.mean))
 }

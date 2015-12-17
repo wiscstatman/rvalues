@@ -1,15 +1,27 @@
-PostProbPois <- function(x,eta,support,mix.prop) {
-      n <- length(x)
-      T <- length(support)
-            
-      z <- .C("postprobpoisson", as.double(x), as.double(eta), 
-                  as.double(support), as.double(mix.prop),
-                  as.integer(n), as.integer(T), double(T), 
-                  post = double(n*T), loglik = double(1), PACKAGE = "rvalues")
-      ans <- list()
-      ans$postprobs <- matrix(z$post, nrow=n)
-      ans$loglik <- z$loglik
-      return(ans)
+#PostProbPois <- function(x,eta,support,mix.prop) {
+#      n <- length(x)
+#      T <- length(support)
+#            
+#      z <- .C("postprobpoisson", as.double(x), as.double(eta), 
+#                  as.double(support), as.double(mix.prop),
+#                  as.integer(n), as.integer(T), double(T), 
+#                  post = double(n*T), loglik = double(1), PACKAGE = "rvalues")
+#      ans <- list()
+#      ans$postprobs <- matrix(z$post, nrow=n)
+#      ans$loglik <- z$loglik
+#      return(ans)
+#}
+
+PostProbPois <- function(x, eta, support, mix.prop) {
+    ### Amat is an n.support x n matrix
+    Amat <- exp(outer( log(support), x) - outer(eta, support) )
+    B <- mix.prop*Amat
+    lik <- colSums(B)  ### note this is only proportional to the likelihood
+    PP <- t(B)/lik
+    ans <- list()
+    ans$loglik <- sum(log(lik))
+    ans$postprobs <- PP
+    return(ans)
 }
 
 NPestPoisson <- function(x,eta,maxiter,tol,nmix)  {
@@ -49,7 +61,7 @@ NPestPoisson <- function(x,eta,maxiter,tol,nmix)  {
   done <- FALSE
   for(k in 1:maxiter)  {
       mix.prop <- colMeans(PP)
-      support <- crossprod(PP,x)/crossprod(PP,eta)
+      support <- as.vector(crossprod(PP,x)/crossprod(PP,eta))
    
       tmp <- PostProbPois(x,eta,support,mix.prop)
       PP <- tmp$postprobs
