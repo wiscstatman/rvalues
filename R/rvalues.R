@@ -124,8 +124,9 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
            else if(prior=="nonparametric") {
              npfit <- npmle(data,family=binomial,maxiter=con$maxiter,
                             tol=con$tol,smooth=con$smooth)
-             PM <- npmixapply(npfit,function(x) { x })
-              
+             #PM <- npmixapply(npfit,function(x) { x })
+             PM <- npfit$post.mean
+             
              min.sup <- log(min(npfit$support)) - log(1 - min(npfit$support))
              lb <- exp(min.sup - 2)/( 1 + exp(min.sup - 2))
              
@@ -170,7 +171,9 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
             else if(prior=="nonparametric") {
                 npfit <- npmle(data,family=family,maxiter=con$maxiter,
                             tol=con$tol,smooth=con$smooth)
-                PM <- npmixapply(npfit,function(x) { x })
+                #PM <- npmixapply(npfit,function(x) { x })
+                PM <- npfit$post.mean
+                
                 lb <- min(npfit$support) - .01
                 theta.alpha <- ThetaQuantiles(npfit$Fhat, alpha.grid, lbd = lb, 
                                                ubd = max(npfit$support))

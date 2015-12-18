@@ -119,6 +119,7 @@ npmle <- function(data, family = gaussian, maxiter = 500, tol = 1e-4,
   ans$fhat <- fhat
   ans$data <- data
   ans$family <- family
+  ans$post.mean <- mix.results$post.mean
   #ans$post.prob <- tmp$postprobs
   
   return(ans)
