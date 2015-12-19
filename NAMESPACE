@@ -6,8 +6,7 @@ S3method("plot","npmix")
 S3method("print","rvals")
 importFrom(graphics, abline, lines, legend, par, plot)
 importFrom(stats, approxfun, binomial, density, gaussian, integrate,
-           is.stepfun, knots, median, nlminb, pbeta, pf, pgamma, pnorm,
+           is.stepfun, knots, median, nlminb, pbeta, pf, pgamma, dnorm, pnorm,
            poisson, pt, dbeta, qbeta, qgamma, qnorm, quantile, rbeta, 
            rbinom, rgamma, rnorm, rpois, rt, stepfun, supsmu, uniroot, var)
 importFrom(utils, head)
-
