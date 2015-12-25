@@ -77,7 +77,7 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
              res$aux <- list(mix.prop=npfit$mix.prop,support=npfit$support,mixcdf=npfit$Fhat,
                              alpha.grid=tmp$alpha,Vmarginals=tmp$lam,Vmarginals.smooth=tmp$lamsmooth,
                              V=tmp$V,unsorted=bar,prior="nonparametric",family="gaussian",
-                             smooth=smooth)
+                             smooth=smooth, conv=npfit$conv)
               res$rvalues <- tmp$rvalues
            }
          },
@@ -111,7 +111,7 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
              res$aux <- list(mix.prop=npfit$mix.prop,support=npfit$support,mixcdf=npfit$Fhat,
                              alpha.grid=tmp$alpha,Vmarginals=tmp$lam,Vmarginals.smooth=tmp$lamsmooth,
                              V=tmp$V,unsorted=bar,prior="nonparametric",family="poisson",
-                             smooth=smooth)
+                             smooth=smooth, conv=npfit$conv)
              res$rvalues <- tmp$rvalues
            }
          },
@@ -152,7 +152,7 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
              res$aux <- list(mix.prop=npfit$mix.prop,support=npfit$support,mixcdf=npfit$Fhat,
                              alpha.grid=tmp$alpha,Vmarginals=tmp$lam,Vmarginals.smooth=tmp$lamsmooth,
                              V=tmp$V,unsorted=bar,prior="nonparametric",family="binomial",
-                             smooth=smooth)
+                             smooth=smooth, conv=npfit$conv)
              res$rvalues <- tmp$rvalues 
            }
          },
@@ -196,7 +196,7 @@ rvalues <- function(data, family = gaussian, hypers = "estimate",
                              mixcdf=npfit$Fhat,alpha.grid=tmp$alpha,
                              Vmarginals=tmp$lam,Vmarginals.smooth=tmp$lamsmooth,
                              V=tmp$V,unsorted=bar,prior="nonparametric",
-                             family="tdist", df=family$df, smooth = smooth)
+                             family="tdist", df=family$df, smooth = smooth, conv=npfit$conv)
                  res$rvalues <- tmp$rvalues
             }
          },

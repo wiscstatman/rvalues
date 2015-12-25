@@ -23,11 +23,6 @@ PostProbNorm <- function(x, std_err, support, mix.prop) {
     ans <- list()
     ans$loglik <- sum(log(lik))
     ans$postprobs <- PP
-    #for(i in 1:n) {
-    #     tmp <- mix.prop*dnorm(x[i], mean=support, sd = std_err[i])
-    #     PP[i,] <- tmp/sum(tmp)
-    #     llik[i] <- log(sum(tmp))
-    #}
     return(ans)
 }
 
@@ -82,7 +77,6 @@ NPestNormal = function(x,std_err,maxiter,tol,nmix)  {
       }
   }
   post.mean <- PP%*%support
-  print(length(post.mean))
   log.lik <- log.lik[1:(counter+1)]
   conv = ifelse(maxiter == counter,1,0)
   return(list(mix.prop=mix.prop,support=support,convergence = conv,log.lik=log.lik,numiter=counter,post.mean=post.mean))

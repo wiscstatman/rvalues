@@ -1,17 +1,32 @@
 
-PostProbBinomial <- function(x,ntrials,support,mix.prop) {
-      n <- length(x)
-      T <- length(support)
-            
-      z <- .C("postprobbinomial", as.double(x), as.double(ntrials), 
-                  as.double(support), as.double(mix.prop),
-                  as.integer(n), as.integer(T), double(T), 
-                  post = double(n*T), loglik = double(1), PACKAGE = "rvalues")
-      ans <- list()
-      ans$postprobs <- matrix(z$post, nrow=n)
-      ans$loglik <- z$loglik
-      return(ans)
+#PostProbBinomial <- function(x,ntrials,support,mix.prop) {
+#      n <- length(x)
+#      T <- length(support)
+#            
+#      z <- .C("postprobbinomial", as.double(x), as.double(ntrials), 
+#                  as.double(support), as.double(mix.prop),
+#                  as.integer(n), as.integer(T), double(T), 
+#                  post = double(n*T), loglik = double(1), PACKAGE = "rvalues")
+#      ans <- list()
+#      ans$postprobs <- matrix(z$post, nrow=n)
+#      ans$loglik <- z$loglik
+#      return(ans)
+#}
+
+
+
+PostProbBinomial <- function(x, ntrials, support, mix.prop) {
+   ### Amat is an n.support x n matrix
+   Amat <- exp(outer( log(support), x) + outer(log(1 - support), ntrials - x) )
+   B <- mix.prop*Amat
+   lik <- colSums(B)  ### note this is only proportional to the likelihood
+   PP <- t(B)/lik
+   ans <- list()
+   ans$loglik <- sum(log(lik))
+   ans$postprobs <- PP
+   return(ans)
 }
+
 
 
 NPestBinomial <- function(x,ntrials,maxiter,tol,nmix)  {
@@ -53,7 +68,7 @@ NPestBinomial <- function(x,ntrials,maxiter,tol,nmix)  {
   done <- FALSE
   for(k in 1:maxiter)  {
       mix.prop <- colMeans(PP)
-      support <- crossprod(PP,x)/crossprod(PP,ntrials)
+      support <- as.vector( crossprod(PP,x)/crossprod(PP,ntrials) )
   
       tmp <- PostProbBinomial(x,ntrials,support,mix.prop)
       PP <- tmp$postprobs
@@ -64,7 +79,8 @@ NPestBinomial <- function(x,ntrials,maxiter,tol,nmix)  {
           break
       }
   }
+  post.mean <- PP%*%support
   log.lik <- log.lik[1:(counter+1)]
   conv = ifelse(maxiter == counter,1,0)
-  return(list(mix.prop=mix.prop,support=support,convergence = conv,log.lik=log.lik,numiter=counter))
+  return(list(mix.prop=mix.prop,support=support,convergence = conv,log.lik=log.lik,numiter=counter, post.mean=post.mean))
 }
