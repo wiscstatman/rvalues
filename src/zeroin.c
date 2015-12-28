@@ -7,7 +7,7 @@
 SEXP ZeroIn(SEXP x, SEXP y, SEXP flow, SEXP fup, SEXP fcall, SEXP st,
                SEXP stol, SEXP smaxit, SEXP env)
 {
-   SEXP sexp_lvec, sexp_uvec, sexp_mvec, ans;
+   SEXP sexp_mvec, ans;
    int maxit = INTEGER(smaxit)[0];
    int T = INTEGER(st)[0];
    double tol = REAL(stol)[0];

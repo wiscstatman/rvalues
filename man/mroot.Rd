@@ -61,7 +61,7 @@ ff <- function(x,a) {
     ans <- qnorm(x) - a
     return(ans)
 }
-n <- 20000
+n <- 10000
 a <- rnorm(n)
 low <- rep(0,n)
 up <- rep(1,n)
