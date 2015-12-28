@@ -104,7 +104,7 @@ flu.rvals$rvalues[fig_indices]
 ### Gaussian sampling distribution with nonparametric prior
 ### Use a maximum of 5 iterations for the nonparam. estimate
 data(hiv)
-hiv.rvals <- rvalues(hiv, prior = "nonparametric", control = list(maxiter=5))
+hiv.rvals <- rvalues(hiv, prior = "nonparametric")
 }
 }
 \keyword{hstat}
