@@ -36,7 +36,7 @@ See Henderson and Newton (2014) for additional details.
 A vector of estimated posterior expected percentiles.
 }
 \references{
-Henderson, N.C. and Newton, M.A. (2014) Making the Cut: Improved Ranking and Selection 
+Henderson, N.C. and Newton, M.A. (2015) Making the Cut: Improved Ranking and Selection 
 for Large-Scale Inference. 
 \url{http://arxiv.org/abs/1312.5776}
 

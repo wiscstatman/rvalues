@@ -78,7 +78,7 @@ the rankings from several other common procedures}
 \item{rvalues}{a vector of r-values}
 }
 \references{
-Henderson, N.C. and Newton, M.A. (2014) \emph{Making the Cut: Improved Ranking and Selection 
+Henderson, N.C. and Newton, M.A. (2015) \emph{Making the Cut: Improved Ranking and Selection 
 for Large-Scale Inference.} 
 \url{http://arxiv.org/abs/1312.5776}
 }

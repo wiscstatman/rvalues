@@ -29,7 +29,7 @@ and smoothing (if desired) the Vmarginals; i.e., an estimate of
 \eqn{\lambda(\alpha)} (see \code{\link{rvalues}})}
 }
 \references{
-Henderson, N.C. and Newton, M.A. (2014) \emph{Making the Cut: Improved Ranking and Selection 
+Henderson, N.C. and Newton, M.A. (2015) \emph{Making the Cut: Improved Ranking and Selection 
 for Large-Scale Inference.} 
 \url{http://arxiv.org/abs/1312.5776}
 }
