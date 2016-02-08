@@ -12,14 +12,34 @@
 #      return(ans)
 #}
 
-PostProbPois <- function(x, eta, support, mix.prop) {
-    ### Amat is an n.support x n matrix
-    Amat <- exp(outer( log(support), x) - outer(support, eta) )
-    B <- mix.prop*Amat
-    lik <- colSums(B)  ### note this is only proportional to the likelihood
-    PP <- t(B)/lik
+#PostProbPois <- function(x, eta, support, mix.prop) {
+#    ### Amat is an n.support x n matrix
+#    Amat <- exp(outer( log(support), x) - outer(support, eta) )
+#    B <- mix.prop*Amat
+#    lik <- colSums(B)  ### note this is only proportional to the likelihood
+#    PP <- t(B)/lik
+#    ans <- list()
+#    ans$loglik <- sum(log(lik))
+#    ans$postprobs <- PP
+#    return(ans)
+#}
+
+PostProbPois <- function (x, eta, support, mix.prop) 
+{
+    # like Nick's version, but uses log-sum-exp trick to avoid underflow
+    # created Feb 8, 2016
+    
+    logJoint <- outer(log(support),x) - outer(support,eta) + log(mix.prop)
+    bestFit <- apply(logJoint,2,max)
+    relativeLogJoint <- t( t(logJoint) - bestFit )
+    logMarg <- bestFit + log( colSums( exp(relativeLogJoint) ) ) 
+    
+    # posteriors
+    tmp <- t( exp(relativeLogJoint))
+    PP <- tmp/rowSums(tmp)
+    
     ans <- list()
-    ans$loglik <- sum(log(lik))
+    ans$loglik <- sum(logMarg)
     ans$postprobs <- PP
     return(ans)
 }
