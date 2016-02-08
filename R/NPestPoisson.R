@@ -81,9 +81,11 @@ NPestPoisson <- function(x,eta,maxiter,tol,nmix)  {
   done <- FALSE
   for(k in 1:maxiter)  {
       mix.prop <- colMeans(PP)
+      ok <- mix.prop > 0
+      PP <- PP[,ok]  ## drop supports having no support!
       support <- as.vector(crossprod(PP,x)/crossprod(PP,eta))
    
-      tmp <- PostProbPois(x,eta,support,mix.prop)
+      tmp <- PostProbPois(x,eta,support,mix.prop[ok])
       PP <- tmp$postprobs
       log.lik[k+1] <- tmp$loglik
       done <- (abs((log.lik[k+1] - log.lik[k])/log.lik[k]) < tol) 
