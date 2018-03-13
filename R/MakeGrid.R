@@ -12,10 +12,10 @@ MakeGrid <- function(nunits, type = "log", ngrid = NULL, lower = 1/nunits,
               }
               else{
                 ## Size of grid grows according to
-                ## f(x) = 1000 + 25*log(x - 1000)*(x - 1000)^(1/4)
+                ## f(x) = 1000 + 5*log(x - 1000)*(x - 1000)^(1/5)
                 
                 nn <- nunits - 1000
-                ngrid <- 1000 + ceiling(25*exp(.25*log(nn))*log(nn))
+                ngrid <- 1000 + min(ceiling(5*exp(.2*log(nn))*log(nn)), 4000)
               }
             }
              grid <- seq(lower,upper,length=ngrid)
@@ -27,10 +27,10 @@ MakeGrid <- function(nunits, type = "log", ngrid = NULL, lower = 1/nunits,
                }
                else{
                  ## Size of grid grows according to
-                 ## f(x) = 1000 + 25*log(x - 1000)*(x - 1000)^(1/4)
+                 ## f(x) = 1000 + 5*log(x - 1000)*(x - 1000)^(1/5)
                  
                  nn <- nunits - 1000
-                 ngrid <- 1000 + ceiling(25*exp(.25*log(nn))*log(nn))
+                 ngrid <- 1000 + min(ceiling(5*exp(.2*log(nn))*log(nn)), 4000)
                } 
              }
             
@@ -43,10 +43,10 @@ MakeGrid <- function(nunits, type = "log", ngrid = NULL, lower = 1/nunits,
                }
                else{
                  ## Size of grid grows according to
-                 ## f(x) = 1000 + 25*log(x - 1000)*(x - 1000)^(1/4)
+                 ## f(x) = 1000 + 5*log(x - 1000)*(x - 1000)^(1/5)
                 
                  nn <- nunits - 1000
-                 ngrid <- 1000 + ceiling(25*exp(.25*log(nn))*log(nn))
+                 ngrid <- 1000 + min(ceiling(5*exp(.2*log(nn))*log(nn)),4000)
                }
              }
              ### ignore the value for upper in this case (due to the symmetry requirement)
