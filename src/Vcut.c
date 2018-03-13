@@ -20,6 +20,7 @@ SEXP Vcut(SEXP Vmat, SEXP lamfun, SEXP nunits, SEXP ngrid, SEXP Agrid) {
          // maybe change the tst>= 0 condition or
          // compare(Vmat) with (lamfun) directly
          // Interpolation:
+         
          if(tst >= 0) {
             //tstp1 = REAL(Vmat)[ii + nrow*jj - 1] - REAL(lamfun)[jj - 1];
             // check if "jj=0"
@@ -28,7 +29,8 @@ SEXP Vcut(SEXP Vmat, SEXP lamfun, SEXP nunits, SEXP ngrid, SEXP Agrid) {
                 gdelt = REAL(Vmat)[ii + nrow*jj] - REAL(lamfun)[jj] - g0;
                 slop = (REAL(Agrid)[jj] - REAL(Agrid)[jj - 1])/gdelt;
                 if(g0*slop <= 0) {
-                    REAL(ans)[ii] = REAL(Agrid)[jj - 1] - g0*slop;
+                    //REAL(ans)[ii] = REAL(Agrid)[jj - 1] - g0*slop;
+                    REAL(ans)[ii] = REAL(Agrid)[jj];
                 }
                 else {
                     REAL(ans)[ii] = REAL(Agrid)[jj];
@@ -42,7 +44,7 @@ SEXP Vcut(SEXP Vmat, SEXP lamfun, SEXP nunits, SEXP ngrid, SEXP Agrid) {
          }
          if(jj == ncol - 1) {
             //INTEGER(ans)[ii] = jj + 1;
-            REAL(ans)[ii] = REAL(Agrid)[jj + 1];
+            REAL(ans)[ii] = REAL(Agrid)[jj];
             // If no root exists across columns return max 
          }
      }
