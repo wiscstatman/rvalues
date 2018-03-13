@@ -1,4 +1,4 @@
-useDynLib(rvalues)
+useDynLib(rvalues, .registration=TRUE)
 export(npmle, tdist, rvaluesMCMC, npmixapply, rvalues, Valpha, 
        PostSummaries, OverlapCurve, FDRCurve, TopList, PostPercentile,
        rvalueBoot, MakeGrid, mroot)
