@@ -61,7 +61,7 @@ rvalue.agrid.nn <- function( MLE.local, SE.local,hypers,alpha.grid,smooth)
   
   V <- pnorm( z, lower.tail=FALSE )  ## V[i,a] = P(theta_i>=theta_a|unit i data)
   ### Is it better to work on the log scale?
-  
+
   tmp <- rvalueGuts( dat=cbind(xx,sig2), alpha.grid=alpha.grid, V=V, vfun=vfun.nn, 
                      hypers=c(0,1),smooth=smooth)
   rvals <- tmp$rvals
