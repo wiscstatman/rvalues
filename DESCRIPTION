@@ -1,9 +1,9 @@
 Package: rvalues
 Type: Package
 Title: R-Values for Ranking in High-Dimensional Settings
-Version: 0.6.2
-Date: 2018-3-13
-Authors@R: c(person("Nicholas", "Henderson", email = "nhender5@jhmi.edu", role = "cre"), person("Michael", "Newton", email = "newton@stat.wisc.edu", role = "aut"))
+Version: 0.6.3
+Date: 2019-09-24
+Authors@R: c(person("Nicholas", "Henderson", email = "nchender@umich.edu", role = "cre"), person("Michael", "Newton", email = "newton@stat.wisc.edu", role = "aut"))
 Maintainer: Nicholas Henderson <nhender5@jhmi.edu>
 Imports: graphics, stats, utils
 Description: A collection of functions for computing "r-values" from various
