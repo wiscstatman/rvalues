@@ -21,7 +21,7 @@ SEXP Vcut(SEXP Vmat, SEXP lamfun, SEXP nunits, SEXP ngrid, SEXP Agrid) {
          // compare(Vmat) with (lamfun) directly
          // Interpolation:
          
-         if(tst >= 0) {
+         if(tst > 0) {
             //tstp1 = REAL(Vmat)[ii + nrow*jj - 1] - REAL(lamfun)[jj - 1];
             // check if "jj=0"
             if(jj > 0) {
