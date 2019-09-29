@@ -1,10 +1,10 @@
 Package: rvalues
 Type: Package
 Title: R-Values for Ranking in High-Dimensional Settings
-Version: 0.6.3
-Date: 2019-09-24
+Version: 0.7
+Date: 2019-09-28
 Authors@R: c(person("Nicholas", "Henderson", email = "nchender@umich.edu", role = "cre"), person("Michael", "Newton", email = "newton@stat.wisc.edu", role = "aut"))
-Maintainer: Nicholas Henderson <nhender5@jhmi.edu>
+Maintainer: Nicholas Henderson <nchender@umich.edu>
 Imports: graphics, stats, utils
 Description: A collection of functions for computing "r-values" from various
     kinds of user input such as MCMC output or a list of effect size estimates
