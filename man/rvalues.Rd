@@ -78,12 +78,10 @@ the rankings from several other common procedures}
 \item{rvalues}{a vector of r-values}
 }
 \references{
-\item Henderson, N.C. and Newton, M.A. (2015). \emph{Making the Cut: Improved Ranking and Selection 
-for Large-Scale Inference.} 
-\url{http://arxiv.org/abs/1312.5776}
-\item Henderson, N.C. and Newton, M.A. (2016). \emph{Making the cut: improved ranking and selection
+Henderson, N.C. and Newton, M.A. (2016). \emph{Making the cut: improved ranking and selection
 for large-scale inference}. J. Royal Statist. Soc. B., 78(4), 781-804.
 \url{https://rss.onlinelibrary.wiley.com/doi/full/10.1111/rssb.12131}
+\url{http://arxiv.org/abs/1312.5776}
 }
 \author{
 Nicholas C. Henderson and Michael A. Newton
