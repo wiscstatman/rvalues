@@ -7,7 +7,7 @@ SEXP Vcut(SEXP Vmat, SEXP lamfun, SEXP nunits, SEXP ngrid, SEXP Agrid) {
   /* lam_fun - vector of length ngrid */
   SEXP ans;
   int nrow, ncol, ii, jj;
-  double tst, g0, gdelt, slop;
+  double g0, gdelt, slop;
   
   nrow = INTEGER(nunits)[0];
   ncol = INTEGER(ngrid)[0];
