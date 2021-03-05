@@ -29,9 +29,10 @@ and smoothing (if desired) the Vmarginals; i.e., an estimate of
 \eqn{\lambda(\alpha)} (see \code{\link{rvalues}})}
 }
 \references{
-Henderson, N.C. and Newton, M.A. (2015) \emph{Making the Cut: Improved Ranking and Selection 
-for Large-Scale Inference.} 
-\url{http://arxiv.org/abs/1312.5776}
+Henderson, N.C. and Newton, M.A. (2016). \emph{Making the cut: improved ranking and selection
+for large-scale inference}. J. Royal Statist. Soc. B., 78(4), 781-804.
+\url{https://doi.org/10.1111/rssb.12131}
+\url{https://arxiv.org/abs/1312.5776}
 }
 \author{
 Nicholas Henderson and Michael Newton

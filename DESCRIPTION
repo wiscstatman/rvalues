@@ -2,7 +2,7 @@ Package: rvalues
 Type: Package
 Title: R-Values for Ranking in High-Dimensional Settings
 Version: 0.7.1
-Date: 2021-03-03
+Date: 2021-03-05
 Authors@R: c(person("Nicholas", "Henderson", email = "nchender@umich.edu", role = "cre"), person("Michael", "Newton", email = "newton@stat.wisc.edu", role = "aut"))
 Maintainer: Nicholas Henderson <nchender@umich.edu>
 Imports: graphics, stats, utils
@@ -13,5 +13,6 @@ Description: A collection of functions for computing "r-values" from various
     interpreted as the smallest percentile at which the unit should be placed in the
     top r-fraction of units.
 License: GPL-2
+URL: https://doi.org/10.1111/rssb.12131
 LazyData: yes
 NeedsCompilation: yes
