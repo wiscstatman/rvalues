@@ -2,7 +2,7 @@ Package: rvalues
 Type: Package
 Title: R-Values for Ranking in High-Dimensional Settings
 Version: 0.7.1
-Date: 2021-03-05
+Date: 2021-03-10
 Authors@R: c(person("Nicholas", "Henderson", email = "nchender@umich.edu", role = "cre"), person("Michael", "Newton", email = "newton@stat.wisc.edu", role = "aut"))
 Maintainer: Nicholas Henderson <nchender@umich.edu>
 Imports: graphics, stats, utils
