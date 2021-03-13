@@ -80,7 +80,7 @@ the rankings from several other common procedures}
 \references{
 Henderson, N.C. and Newton, M.A. (2016). \emph{Making the cut: improved ranking and selection
 for large-scale inference}. J. Royal Statist. Soc. B., 78(4), 781-804.
-\url{https://doi.org/10.1111/rssb.12131}
+\doi{10.1111/rssb.12131}
 \url{https://arxiv.org/abs/1312.5776}
 }
 \author{
